@@ -54,6 +54,7 @@ resource "google_compute_instance" "default11" {
   dbpass          = data.google_secret_manager_secret_version.postgres.secret_data
   MY_PASSWORD     = data.google_secret_manager_secret_version.MY_PASSWORD.secret_data
   DATASOURCE_USER = data.google_secret_manager_secret_version.DATASOURCE_USER.secret_data
+  DATASOURCE_URL = data.google_secret_manager_secret_version.DATASOURCE_URL.secret_data
   JWT_SECRET      = data.google_secret_manager_secret_version.JWT_SECRET.secret_data
   })
  
@@ -85,6 +86,9 @@ data "google_secret_manager_secret_version" "JWT_SECRET" {
 }
 data "google_secret_manager_secret_version" "DATASOURCE_USER" {
   secret = "DATASOURCE_USER"
+}
+data "google_secret_manager_secret_version" "DATASOURCE_URL" { 
+  secret = "DATASOURCE_URL"
 }
 
 }
